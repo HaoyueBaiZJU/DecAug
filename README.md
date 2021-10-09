@@ -1,2 +1,78 @@
 # DecAug
 This is a reproduced repo of Out-of-Distribution Generalization via Decomposed Feature Representation and Semantic Augmentation.
+
+## Outline
+
+While deep learning demonstrates its strong ability to handle independent and identically distributed (IID) data, it often suffers from out-of-distribution (OoD) generalization, where distribution shift appears when testing. Although various methods are proposed for OoD generalization problem, it has been demonstrated that these methods can only solve one specific distribution shift, such as domain shift or correlation relation extrapolation. In this paper, we propose to disentangle category-related and context-related features from the input data. Category-related features contain causal information of the target object recognition task, while context-related features describe the attributes, styles, backgrounds, or scenes of target objects, causing distribution shifts between training and test data. The decomposition is achieved by orthogonalizing the two gradients (w.r.t. intermediate features) of losses for predicting category and context labels respectively. Furthermore, we perform gradient-based augmentation on context-related features to improve the robustness of the learned representations. Experimental results show that our method outperforms other state-of-the-art methods on various OoD datasets, which is among the very few methods that can deal with different types of OoD generalization challenges. To the best of our knowledge, the proposed method is one of the first data augmentation method to tackle OoD generalization problem.
+
+### Prerequisites
+
+Python3.6. and the following packages are required to run the scripts:
+
+- [PyTorch-1.1.0 and torchvision](https://pytorch.org)  
+
+- Package [tensorboardX](https://github.com/lanpa/tensorboardX)
+
+
+- Dataset: please download the dataset and put images into the folder data/[name of the dataset, NICO or PACS or Color-MNIST]/
+
+- Pre-Trained Weights: please download the pre-trained weights and put the weights in the folder saves/initialization/[resnet18.pth] 
+
+### Code Structure
+
+There are three parts in the code:
+ - model: the main codes of the dataloader, DecAug, and network architecture.
+ - saves: to put the initialized weights.
+ - main.py: the main file to train and evaluate the model.
+
+
+### Main Hyper-parameters
+
+We introduce the usual hyper-parameters as below. There are some other hyper-parameters in the code, which are only added to make the code general, but not used for experiments in the paper.
+
+#### Basic Parameters
+
+- `dataset`: The dataset to use. For example, `NicoAnimal` or `NicoVehicle` or `pacs` or `cmnist`.
+
+- `backbone_class`: The backbone to use, choose `resnet18`.
+
+#### Optimization Parameters
+
+- `max_epoch`: The maximum number of epochs to train the model, default to `100`
+
+- `lr`: The learning rate, default to `0.01`
+
+- `init_weights`: The path to the init weights
+
+- `batch_size`: The number of inputs for each batch, default to `64`
+
+- `image_size`: The designed input size to preprocess the image, default to `225`
+
+- `prefetch`: The number of workers for dataloader, default to `16`
+
+
+#### Model Parameters
+
+- `model_type`: The model to use, choose `DecAug`.
+
+- `balance1`: The weight for the category branch regularizer in the paper, default to `0.01`
+
+- `balance2`: The weight for the context branch regularizer in the paper, default to `0.01`
+
+- `balanceorth`: The weight for the orth regularizer in the paper, default to `0.01`
+
+- `perturbation`: The weight for the semantic augmentation in the paper, default to `1`
+
+- `epsilon`: The weight for the orth regularizer in the paper, default to `0.01`
+
+- `targetdomain`: The name of the target test domain, default to `photo`
+
+#### Other Parameters
+
+- `gpu`: To select which GPU device to use, default to `0`.
+
+### Demonstrations on PACS with DecAug
+
+Train and evaluate DecAug with target domain photo on PACS:
+
+$ python main.py --dataset pacs --model_type DecAug --backbone_class resnet18 --max_epoch 100 --balance1 0.01 --balance2 0.01 --balanceorth 0.01 --lr 0.01 --targetdomain photo --gpu 0 --perturbation 1 --batch_size 64
