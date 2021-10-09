@@ -76,3 +76,18 @@ We introduce the usual hyper-parameters as below. There are some other hyper-par
 Train and evaluate DecAug with target domain photo on PACS:
 
 $ python main.py --dataset pacs --model_type DecAug --backbone_class resnet18 --max_epoch 100 --balance1 0.01 --balance2 0.01 --balanceorth 0.01 --lr 0.01 --targetdomain photo --gpu 0 --perturbation 1 --batch_size 64
+
+
+### References
+If you find this work or code useful, please cite:
+
+```
+@article{bai2020decaug,
+  title={Decaug: Out-of-distribution generalization via decomposed feature representation and semantic augmentation},
+  author={Bai, Haoyue and Sun, Rui and Hong, Lanqing and Zhou, Fengwei and Ye, Nanyang and Ye, Han-Jia and Chan, S-H Gary and Li, Zhenguo},
+  journal={AAAI},
+  year={2021}
+}
+```
+
+
