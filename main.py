@@ -124,7 +124,7 @@ def get_loader(args):
     val_loader = DataLoader(dataset=valset, batch_size=args.batch_size, shuffle=False, num_workers=args.prefetch, pin_memory=True)
     test_loader = DataLoader(dataset=testset, batch_size=args.batch_size, shuffle=False, num_workers=args.prefetch, pin_memory=True)
   
-    return train_loader, test_loader, test_loader
+    return train_loader, val_loader, test_loader
 
 
 def create_exp_dir(path):
