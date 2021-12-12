@@ -1,5 +1,5 @@
 # DecAug
-This is a reproduced repo of Out-of-Distribution Generalization via Decomposed Feature Representation and Semantic Augmentation.
+This is a repo of Out-of-Distribution Generalization via Decomposed Feature Representation and Semantic Augmentation.
 
 ## Outline
 
