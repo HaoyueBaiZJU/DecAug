@@ -23,7 +23,7 @@ Python3.6. and the following packages are required to run the scripts:
 There are three parts in the code:
  - model: the main codes of the dataloader, DecAug, and network architecture.
  - dataset: the code of dataset preprocessing
- - baselines: the codes of baselines including CNBB, JiGen, DANN, Cumix, etc.
+ - baselines: the main codes of DecAug baselines including CNBB, JiGen, DANN, Cumix, etc.
  - saves: to put the initialized weights.
  - main.py: the main file to train and evaluate the model.
 
