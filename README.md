@@ -74,12 +74,6 @@ We introduce the usual hyper-parameters as below. There are some other hyper-par
 
 - `gpu`: To select which GPU device to use, default to `0`.
 
-### Demonstrations on PACS with DecAug
-
-Train and evaluate DecAug with target domain photo on PACS:
-
-$ python main.py --dataset pacs --model_type DecAug --backbone_class resnet18 --max_epoch 100 --balance1 0.01 --balance2 0.01 --balanceorth 0.01 --lr 0.01 --targetdomain photo --gpu 0 --perturbation 1 --batch_size 64
-
 
 ### References
 If you find this work or code useful, please cite:
