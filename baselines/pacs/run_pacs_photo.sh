@@ -1,1 +1,0 @@
-python train_pacs.py --algorithm SagNet --gpu 2 --source sketch cartoon art_painting --target photo
