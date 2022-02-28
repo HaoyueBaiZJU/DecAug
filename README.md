@@ -21,13 +21,12 @@ Python3.6. and the following packages are required to run the scripts:
 ### Code Structure
 
 There are six parts in the code:
- - model: the main codes of the DecAug, and network architecture.
+ - main.py: the main file including loss function.
+ - model: the main codes of the network.
  - dataloader: the main codes of the dataloader.
  - dataset: the main codes of dataset preprocessing.
  - baselines: the main codes of DecAug baselines including CNBB, JiGen, DANN, Cumix, etc.
  - saves: to put the initialized weights.
- - main.py: the main file to train and evaluate the model.
-
 
 ### Main Hyper-parameters
 
